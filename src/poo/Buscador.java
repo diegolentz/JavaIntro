@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Buscador {
 
-	String claveBusqueda;
-	Integer cantidadResultados;
+	private String claveBusqueda;
+	private Integer cantidadResultados;
 
-	ArrayList<Articulo> articulos = new ArrayList<Articulo>();
-	ArrayList<Articulo> resultados = new ArrayList<Articulo>();
+	private ArrayList<Articulo> articulos = new ArrayList<Articulo>();
+	private ArrayList<Articulo> resultados = new ArrayList<Articulo>();
 	
 	//constructor
 //	public Buscador() {
@@ -33,7 +33,7 @@ public class Buscador {
 	}
 
 	public void evaluar(Articulo articulo) {
-		if (articulo.nombre.contains(claveBusqueda)) {
+		if (articulo.getNombre().contains(claveBusqueda)) {
 			articulos.add(articulo);
 			cantidadResultados += 1;
 		}
@@ -46,18 +46,53 @@ public class Buscador {
 		resultados.add(new Articulo(4,"pepe el caballero", "christopher nolan", 200.0, ""));
 	}
 	
-	void mostrarResultados() {
+	public void mostrarResultados() {
 		System.out.println("se encontraron " + cantidadResultados + " resultados\n");
 	}
 	
-	void detalle() {
+	public void detalle() {
 		for (Articulo articulo : articulos) {
-			System.out.println(articulo.nombre);
-			System.out.println(articulo.autor);
+			System.out.println(articulo.getNombre());
+			System.out.println(articulo.getAutor());
 			System.out.println(articulo.tieneImagen());
-			System.out.println(articulo.precio + "\n");
+			System.out.println(articulo.getPrecio());
 		}
 	}
 	
+	public String getClaveBusqueda() {
+		return claveBusqueda;
+	}
+
+	public void setClaveBusqueda(String claveBusqueda) {
+		this.claveBusqueda = claveBusqueda;
+	}
+
+	public Integer getCantidadResultados() {
+		return cantidadResultados;
+	}
+
+	public void setCantidadResultados(Integer cantidadResultados) {
+		this.cantidadResultados = cantidadResultados;
+	}
+
+	public ArrayList<Articulo> getArticulos() {
+		return articulos;
+	}
+
+	public void setArticulos(ArrayList<Articulo> articulos) {
+		this.articulos = articulos;
+	}
+
+	public ArrayList<Articulo> getResultados() {
+		return resultados;
+	}
+
+	public void setResultados(ArrayList<Articulo> resultados) {
+		this.resultados = resultados;
+	}
+
+	public int cantidadArticulos() {
+		return  (this.articulos == null) ? 0 : this.articulos.size();
+	}
 	
 }

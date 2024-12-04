@@ -31,15 +31,15 @@ public class Carrito {
 	public Double obtenerPrecio() {
 		Double precio = 0.0;
 		for (Item unItem : this.items) {
-			precio += unItem.articulo.precio;
+			precio += unItem.articulo.getPrecio();
 		}
 		return precio;
 	}
 
 	public void eliminarItem(Item eliminarItem) {
 		for (Item unItem : this.items) {
-			if (unItem.articulo.id.equals(eliminarItem.articulo.id)) {
-				if (existeItem(unItem.articulo.id)) {
+			if (unItem.articulo.getId() == (eliminarItem.articulo.getId())) {
+				if (existeItem(unItem.articulo.getId())) {
 					this.items.remove(unItem);
 					break;
 				}
@@ -50,7 +50,7 @@ public class Carrito {
 	public boolean existeItem(Integer id) {
 		boolean existe = false;
 		for (Item unItem : this.items) {
-			if (unItem.articulo.id.equals(id)) {
+			if (unItem.articulo.getId() == (id)) {
 				existe = true;
 				break;
 			}
