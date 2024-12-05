@@ -1,6 +1,6 @@
 package poo;
 
-public class Articulo {
+public abstract class Articulo {
 
 	private Integer id;
 	private String nombre;
@@ -16,18 +16,31 @@ public class Articulo {
 		this.urlImagen = urlImagen;
 	}
 
-	public boolean tieneImagen() {
-		return this.urlImagen != "" && this.urlImagen != null;
+	public String tieneImagen() {
+		String urlImagen;
+		if (this.urlImagen != null) {
+			urlImagen = this.urlImagen;
+		} else {
+			urlImagen = "no tiene imagen";
+		}
+		return urlImagen;
 	}
 
 	public void agregarAlCarrito() {
 
 	}
 
-//	public int suID() {
-//		return this.id;
-//	}
+	public void detalle() {
+		System.out.println(this.getNombre());
+		System.out.println(this.getAutor());
+		System.out.println(this.tieneImagen());
+		System.out.println(this.getPrecio());
 
+		this.detalleHijo();
+	}
+	
+	public abstract void detalleHijo();
+	
 	public Integer getId() {
 		return id;
 	}

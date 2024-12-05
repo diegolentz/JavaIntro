@@ -2,6 +2,10 @@ package poo;
 
 import java.util.ArrayList;
 
+import repaso.Libro;
+import repaso.Musica;
+import repaso.Pasatiempo;
+
 public class Buscador {
 
 	private String claveBusqueda;
@@ -9,24 +13,25 @@ public class Buscador {
 
 	private ArrayList<Articulo> articulos = new ArrayList<Articulo>();
 	private ArrayList<Articulo> resultados = new ArrayList<Articulo>();
-	
-	//constructor
+	private ArrayList<String> listaMusica = new ArrayList<String>();
+
+	// constructor
 //	public Buscador() {
 //		this.claveBusqueda = "";
 //		cantidadResultados = 0;
 //	}
-	
+
 	public Buscador(String claveBusqueda) {
 		this.claveBusqueda = claveBusqueda;
 		cantidadResultados = 0;
 	}
-	
-	//metodos
+
+	// metodos
 	public void buscar() {
 		cargarArticulos();
-		
+
 		if (claveBusqueda != "") {
-			for ( Articulo articulo : resultados) {
+			for (Articulo articulo : resultados) {
 				evaluar(articulo);
 			}
 		}
@@ -40,25 +45,26 @@ public class Buscador {
 	}
 
 	private void cargarArticulos() {
-		resultados.add(new Articulo(1,"batman ", "christopher nolan", 200.0, "una imagen"));
-		resultados.add(new Articulo(2,"batman inicia", "christopher nolan", 200.0, "otra imagen"));
-		resultados.add(new Articulo(3,"batman el caballero", "christopher nolan", 200.0, ""));
-		resultados.add(new Articulo(4,"pepe el caballero", "christopher nolan", 200.0, ""));
+
+		listaMusica.add("cancion1");
+		listaMusica.add("cancion2");
+		listaMusica.add("cancion3");
+
+		resultados.add(new Libro(1, "batman ", "christopher nolan", 200.0, "una imagen", "123456"));
+		resultados.add(new Musica(2, "batman inicia", "christopher nolan", 200.0, "otra imagen", listaMusica));
+		resultados.add(new Pasatiempo(3, "batman el caballero", "christopher nolan", 200.0, "otra imagen", "una marca"));
 	}
-	
+
 	public void mostrarResultados() {
 		System.out.println("se encontraron " + cantidadResultados + " resultados\n");
 	}
-	
+
 	public void detalle() {
 		for (Articulo articulo : articulos) {
-			System.out.println(articulo.getNombre());
-			System.out.println(articulo.getAutor());
-			System.out.println(articulo.tieneImagen());
-			System.out.println(articulo.getPrecio());
+			articulo.detalle();
 		}
 	}
-	
+
 	public String getClaveBusqueda() {
 		return claveBusqueda;
 	}
@@ -92,7 +98,7 @@ public class Buscador {
 	}
 
 	public int cantidadArticulos() {
-		return  (this.articulos == null) ? 0 : this.articulos.size();
+		return (this.articulos == null) ? 0 : this.articulos.size();
 	}
-	
+
 }

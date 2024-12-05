@@ -13,7 +13,7 @@ public class mainPoo {
 		do {
 			
 			do {
-				System.out.println("Ingrese la clave de busqueda");
+				System.out.println("Ingrese la clave de busqueda\n");
 				claveBusqueda = teclado.next();
 			} while (claveBusqueda == "" || claveBusqueda == null);
 			Buscador buscador = new Buscador(claveBusqueda);
@@ -37,8 +37,8 @@ public class mainPoo {
 			System.out.println("precio total " + miCarrito.obtenerPrecio());
 	
 			
-			System.out.println("desea continuar? /n" );
-			System.out.println("1-si 2-no/n" );
+			System.out.println("desea continuar? \n" );
+			System.out.println("1-si 2-no\n" );
 			continuar = teclado.nextInt();
 		}while(continuar == 1);	
 		teclado.close();
